@@ -62,6 +62,16 @@ p {
 
 /* header */
 
+header {
+	.dropdown {
+		&:hover {
+			&>.dropdown-menu {
+				display: block;
+			}
+		}
+	}
+}
+
 #logo {
 	float: left;
 	margin-right: 10px;
