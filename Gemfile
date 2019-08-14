@@ -77,6 +77,8 @@ gem "bootstrap-sass"
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-material-design'
+gem 'jquery-rails' 
+gem 'jquery-ui-rails'
 
 # User authentication
 gem "devise"
