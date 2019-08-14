@@ -20,5 +20,5 @@ module Sayf
 		# the framework and any gems in your application.
 		
 		config.assets.initialize_on_precompile = false
-  end
+	end
 end
