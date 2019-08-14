@@ -10,7 +10,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "foo",
                                          password_confirmation: "bar" } }
     end
-    assert_template 'devise/registrations/new'
+		assert_template root_path
+		assert_not flash.present?
 	end
 	
 	test "valid signup information" do
@@ -22,6 +23,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "foobar",
                                          password_confirmation: "foobar" } }
     end
-    assert_template root_path
+		assert_template root_path
+		assert_not flash.empty?
   end
 end
