@@ -2,9 +2,9 @@
 
 module UsersHelper
 	def icon_for(user, size: 80)
-		if user.icon.blank?
+		if user.icon_identifier.blank?
 			icon = "user.png"
-		elsif user.icon_identifier && user.icon_identifier.start_with?("http")
+		elsif user.icon_identifier.start_with?("http")
 			icon = user.icon_identifier
 		else
 			icon = user.icon_url
