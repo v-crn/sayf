@@ -121,8 +121,9 @@ build-iPhoneSimulator/
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
-# Ignore master key for decrypting credentials and more.
-/config/master.key
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Ignore uploaded test images
+/public/uploads

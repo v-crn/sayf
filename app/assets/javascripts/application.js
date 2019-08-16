@@ -24,15 +24,15 @@ $(document).on('turbolinks:load', function () {
 			var reader = new FileReader();
 
 			reader.onload = function (e) {
-				$('#icon_img_prev').attr('src', e.target.result);
+				$('#img_prev').attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
 
 	$("#post_img").change(function () {
-		$('#icon_img_prev').removeClass('hidden');
-		$('.icon_present_img').remove();
+		$('#img_prev').removeClass('hidden');
+		$('.present_img').remove();
 		readURL(this);
 	});
 });
