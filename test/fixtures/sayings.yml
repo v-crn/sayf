@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: "ぼくの青春はぼくから逃れてゆく。病気というのはそのことだ。 -- アルベール・カミュ『手帖』"
+  created_at: <%= 10.minutes.ago %>
+  user: john
+
+two:
+  content: "光陰虚しく渡ることなかれ -- 道元『正法眼蔵随聞記』"
+  created_at: <%= 20.minutes.ago %>
+  user: john
+
+most_recent:
+  content: "This is the most recent post."
+  created_at: <%= Time.zone.now %>
+  user: john
+
+ants:
+  content: "Oh, is that what you want? Because that's how you get ants!"
+  created_at: <%= 2.years.ago %>
+  user: archer
+
+zone:
+  content: "Danger zone!"
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+tone:
+  content: "I'm sorry. Your words made sense, but your sarcastic tone did not."
+  created_at: <%= 10.minutes.ago %>
+  user: lana
+
+van:
+  content: "Dude, this van's, like, rolling probable cause."
+  created_at: <%= 4.hours.ago %>
+  user: lana
