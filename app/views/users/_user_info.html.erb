@@ -1,6 +1,4 @@
 <%= icon_for(@user, size: 200) %>
 <h1><%= @user.name %></h1>
 <p><%= @user.profile %></p>
-<% if @user == current_user %>
-<%= link_to "Edit profile", profile_edit_path %>
-<% end %>
+<span><%= "#{@user.sayings.count} " + "saying".pluralize(@user.sayings.count) %></span>

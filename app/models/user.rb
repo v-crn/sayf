@@ -7,4 +7,8 @@ class User < ApplicationRecord
 	validates :name, presence: true 
 	validates :profile, length: { maximum: 200 }
 	mount_uploader :icon, ImageUploader
+	
+	def feed
+		Saying.where("user_id=?", id)
+	end
 end

@@ -10,13 +10,13 @@
 
 <div class="field">
 	<%= f.label :icon %><br />
-	<img id="icon_img_prev" src="#" class='hidden' />
+	<img id="img_prev" src="#" class='hidden' />
 	<% if current_user.persisted? && current_user.icon? %>
-	<%= image_tag current_user.icon_url, class: 'icon_present_img icon_image' %><br />
+	<%= image_tag current_user.icon_url, class: 'present_img icon_image' %><br />
 	<%= f.check_box :remove_icon %>
 	<%= f.label :remove_icon, "remove icon image" %>
 	<% else %>
-	<%= image_tag 'user.png', class: 'icon_present_img icon_image' %>
+	<%= image_tag 'user.png', class: 'present_img icon_image' %>
 	<%= f.hidden_field :icon_cache %>
 	<% end %>
 	<%= f.file_field :icon, class: "form-control-file", id: 'post_img' %>

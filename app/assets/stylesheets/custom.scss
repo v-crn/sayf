@@ -128,13 +128,12 @@ footer {
 /* sidebar */
 
 aside {
-	section.user_info {
-		margin-top: 20px;
-	}
-
 	section {
-		padding: 10px 0;
-		margin-top: 20px;
+		margin-top: 10px;
+
+		.user_info {
+			margin-top: 10px;
+		}
 
 		&:first-child {
 			border: 0;
@@ -154,6 +153,10 @@ aside {
 			margin-bottom: 5px;
 			margin-top: 5px;
 		}
+	}
+
+	.saying_form {
+		margin-bottom: 10px;
 	}
 }
 
@@ -181,58 +184,4 @@ select,
 	width: 100%;
 	margin-top: 45px;
 	@include box_sizing;
-}
-
-/* sayings */
-
-.sayings {
-	list-style: none;
-	padding: 0;
-
-	li {
-		padding: 10px 0;
-		border-top: 1px solid #e8e8e8;
-	}
-
-	.user {
-		margin-top: 5em;
-		padding-top: 0;
-	}
-
-	.content {
-		display: block;
-		margin-left: 60px;
-
-		img {
-			display: block;
-			padding: 5px 0;
-		}
-	}
-
-	.timestamp {
-		color: $gray-light;
-		display: block;
-		margin-left: 60px;
-	}
-
-	.icon {
-		float: left;
-		margin-right: 10px;
-		// margin: 5px;
-	}
-}
-
-aside {
-	textarea {
-		height: 100px;
-		margin-bottom: 5px;
-	}
-}
-
-span.picture {
-	margin-top: 10px;
-
-	input {
-		border: 0;
-	}
 }

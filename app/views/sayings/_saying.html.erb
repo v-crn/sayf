@@ -1,0 +1,15 @@
+<li id="saying-<%= saying.id %>">
+	<span class="icon"><%= link_to icon_for(saying.user, size: 65), saying.user %></span>
+	<span class="user"><%= link_to saying.user.name, saying.user %></span>
+	<span class="content">
+		<%= saying.content %>
+		<%= image_tag saying.picture.url if saying.picture? %>
+	</span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(saying.created_at) %> ago.
+		<% if saying.user == current_user %>
+		<%= link_to "delete", saying, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+		<% end %>
+	</span>
+</li>

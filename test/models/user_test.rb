@@ -5,7 +5,7 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
   end
-
+	
   test "associated sayings should be destroyed" do
     @user.save
     @user.sayings.create!(content: "Lorem ipsum")

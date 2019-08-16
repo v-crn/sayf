@@ -1,3 +1,19 @@
 <% provide(:title, "Home") %>
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% if user_signed_in? %>
+<div class="row">
+	<aside class="col-md-4">
+		<section class="user_info">
+			<!--sayingをpostした直後@userがnilになるので再度current_userを代入-->
+			<% @user = current_user if @user.blank? %>
+			<%= render 'users/user_info' %>
+		</section>
+		<section class="saying_form">
+			<%= render 'sayings/saying_form' %>
+		</section>
+	</aside>
+	<div class="col-md-8">
+		<h3>Saying Feed</h3>
+		<%= render 'shared/feed' %>
+	</div>
+</div>
+<% end %>
