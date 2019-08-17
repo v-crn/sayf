@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: 7d37acf5ae1bbfa5a25ccea785ebcdfb0be0f377
+  revision: 6d9ef88bb05199dd5e3a30c8902d8a8e2bb1004d
   branch: master
   specs:
     faker (2.1.2)
@@ -180,7 +180,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    minitest-reporters (1.3.6)
+    minitest-reporters (1.3.8)
       ansi
       builder
       minitest (>= 5.0)
@@ -189,7 +189,7 @@ GEM
     multi_json (1.13.1)
     nenv (0.3.0)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.3)
       nenv (~> 0.1)
