@@ -4,7 +4,7 @@ module UsersHelper
 	def icon_for(user, size: 80)
 		icon = if user.blank? || user.icon_identifier.blank?
 						 "user.png"
-					 elsif !Rails.env.production? && user.icon_identifier.start_with?("http")
+					 elsif user.icon_identifier.start_with?("http")
 						 user.icon_identifier
 					 else
 						 user.icon_url
