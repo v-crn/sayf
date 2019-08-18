@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SayingsInterfaceTest < ActionDispatch::IntegrationTest
-	include Pagy::Backend
 	include Devise::Test::IntegrationHelpers
 	
 	def setup

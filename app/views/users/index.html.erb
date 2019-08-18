@@ -4,8 +4,10 @@
 <ul class="users">
 	<% @users.each do |user| %>
 	<li>
-		<%= icon_for user, size: 50 %>
-		<%= link_to user.name, user %>
+		<%= render user %>
 	</li>
 	<% end %>
+	<div class="d-flex justify-content-left mb-2">
+		<%== pagy_bootstrap_nav(@pagy_users) if @pagy_users.pages > 1 %>
+	</div>
 </ul>

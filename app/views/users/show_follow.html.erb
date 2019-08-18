@@ -1,0 +1,26 @@
+<% provide(:title, @title) %>
+<div class="row">
+	<aside class="col-md-4">
+		<section class="user_info">
+			<%= icon_for @user %>
+			<h1><%= @user.name %></h1>
+			<span><%= link_to "view my profile", @user %></span>
+			<span><b>Sayings:</b> <%= @user.sayings.count %></span>
+		</section>
+		<section class="follow_icons">
+			<%= render 'shared/stats_following' %>
+			<%= render 'users/user_icons' if @title == "Following" %>
+			<%= render 'shared/stats_followers' %>
+			<%= render 'users/user_icons' if @title == "Followers" %>
+		</section>
+	</aside>
+	<div class="col-md-8">
+		<h3><%= @title %></h3>
+		<% if @users.any? %>
+		<ul class="users follow">
+			<%= render @users %>
+		</ul>
+		<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+		<% end %>
+	</div>
+</div>

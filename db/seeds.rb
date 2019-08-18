@@ -1,13 +1,12 @@
-# frozen_string_literal: true
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
+# Users
 50.times do |n|
 	name          = Faker::FunnyName.name
 	email         = Faker::Internet.email
 	password      = "abc123"
-	icon					= Faker::Avatar.image(size: "200x200")
+	icon					= open("#{Rails.root}/test/fixtures/user_icons/user#{n % 9 + 1}.png")
 	profile       = Faker::Quotes::Shakespeare.as_you_like_it_quote
 	User.create!(name:                  name,
                email:                 email,
@@ -17,8 +16,17 @@
                password_confirmation: password)
 end
 
+# Sayings
 users = User.order(:created_at).take(6)
 20.times do
   content = Faker::Quote.famous_last_words
   users.each { |user| user.sayings.create!(content: content) }
 end
+
+# Relationships
+users = User.all
+user = User.first
+following = users[2..(User.count / 2)]
+followers = users[3..(User.count / 3)]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
