@@ -54,5 +54,12 @@ class FollowingTest < ActionDispatch::IntegrationTest
     assert_difference '@user.following.count', -1 do
       delete relationship_path(relationship), xhr: true
     end
+	end
+	
+	test "feed on Home page" do
+    get root_path
+    @user.feed.each do |saying|
+      assert_match CGI.escapeHTML(saying.content), response.body
+    end
   end
 end
