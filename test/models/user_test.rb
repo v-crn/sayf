@@ -16,21 +16,21 @@ class UserTest < ActiveSupport::TestCase
 	
 	test "should follow and unfollow a user" do
     user_0 = users(:user_0)
-    user_1  = users(:user_1)
-    assert_not user_0.following?(user_1)
-    user_0.follow(user_1)
-		assert user_0.following?(user_1)
-		assert user_1.followers.include?(user_0)
-    user_0.unfollow(user_1)
-    assert_not user_0.following?(user_1)
+    user_2  = users(:user_2)
+    assert_not user_0.following?(user_2)
+    user_0.follow(user_2)
+		assert user_0.following?(user_2)
+		assert user_2.followers.include?(user_0)
+    user_0.unfollow(user_2)
+    assert_not user_0.following?(user_2)
 	end
 	
 	test "feed should have the right posts" do
     john = users(:john)
     user_0  = users(:user_0)
-    user_1    = users(:user_1)
+    user_2    = users(:user_2)
     # フォローしているユーザーの投稿を確認
-    user_1.sayings.each do |post_following|
+    user_0.sayings.each do |post_following|
       assert john.feed.include?(post_following)
     end
     # 自分自身の投稿を確認
@@ -38,7 +38,7 @@ class UserTest < ActiveSupport::TestCase
       assert john.feed.include?(post_self)
     end
     # フォローしていないユーザーの投稿を確認
-    user_0.sayings.each do |post_unfollowed|
+    user_2.sayings.each do |post_unfollowed|
       assert_not john.feed.include?(post_unfollowed)
     end
   end

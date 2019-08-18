@@ -44,7 +44,7 @@ class SayingsInterfaceTest < ActionDispatch::IntegrationTest
     get root_path
     assert_match "#{@user.sayings.count} " + "saying".pluralize(@user.sayings.count), response.body
     # まだ投稿していないユーザー
-    other_user = users(:user_1)
+    other_user = users(:user_10)
     sign_in(other_user)
     get root_path
     assert_match "0 sayings", response.body
