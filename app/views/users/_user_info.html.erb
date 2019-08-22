@@ -1,6 +1,13 @@
 <%= icon_for(@user, size: 200) %>
-<h1><%= link_to @user.name, @user %></h1>
+<div class="row">
+	<aside class="col-md-8">
+    <h1><%= link_to @user.name, @user %></h1>
+  </aside>
+  <div class="col-md-4">
+    <%= render 'users/follow_form' if user_signed_in? %>
+  </div>
+</div>
 <p><%= @user.profile %></p>
 <span>
-	<%= "#{@user.sayings.count} " + "saying".pluralize(@user.sayings.count) %>
+  <%= "#{@user.sayings.count} " + "saying".pluralize(@user.sayings.count) %>
 </span>
