@@ -26,27 +26,18 @@ class User < ApplicationRecord
 
   # Favorites
   has_many :favorites, dependent: :destroy
-  has_many :fav_sayings, through: :favorites, source: :saying
+  has_many :fav_sayings, -> { distinct }, through: :favorites, source: :saying
 
   def like(saying)
-    return if saying.blank? || saying.id.blank?
-
-    fav = favorites.find_or_create_by(saying_id: saying.id)
-    fav.update(points: fav.points + 1)
+    favorites.create!(saying_id: saying.id)
   end
 
   def unlike(saying)
-    return if saying.blank? || saying.id.blank?
-
-    fav = favorites.find_by(saying_id: saying.id)
-    return if fav.blank?
-
-    fav.update(points: fav.points - 1)
-    fav.destroy! if fav.points <= 0
+    favorites.find_by(saying_id: saying.id).destroy
   end
 
   def is_favorite?(saying)
-    fav_sayings.include?(saying)
+    favorites.find_by(saying_id: saying.id).present?
   end
 
   def feed

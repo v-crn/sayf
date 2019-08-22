@@ -1,10 +1,17 @@
 require 'test_helper'
 
 class FavoritesControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
+  test 'create should require logged-in user' do
+    assert_no_difference 'Favorite.count' do
+      post favorites_path
+    end
+    assert_redirected_to new_user_session_path
+  end
 
-  def setup
-    Warden.test_mode!
-    @saying = sayings(:most_recent)
+  test 'destroy should require logged-in user' do
+    assert_no_difference 'Favorite.count' do
+      delete favorite_path(favorites(:one))
+    end
+    assert_redirected_to new_user_session_path
   end
 end

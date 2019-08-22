@@ -1,27 +1,32 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!, only: %i[update]
+  before_action :authenticate_user!, only: %i[create destroy]
+  after_action :reload_with_ajax, only: %i[create destroy]
 
-  def update
-    @favorite = Favorite.find(params[:id])
+  def create
+    @saying = Saying.find(create_favorite_params)
+    current_user.like(@saying)
+  end
+
+  def destroy
+    @favorite = Favorite.find(destroy_favorite_params)
     @saying = Saying.find(@favorite.saying_id)
-    return unless @favorite || @favorite.points || @saying
-
-    if is_like_button?
-      @favorite.update(points: @favorite.points + 1)
-    else
-      @favorite.update(points: @favorite.points - 1)
-      @favorite.destroy! if @favorite.points <= 0
-    end
-
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: request.referer) }
-      format.js
-    end
+    current_user.unlike(@saying)
   end
 
   private
 
-  def is_like_button?
-    params[:commit] == '+'
+  def create_favorite_params
+    params.require(:saying_id)
+  end
+
+  def destroy_favorite_params
+    params.require(:id)
+  end
+
+  def reload_with_ajax
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: request.referer) }
+      format.js
+    end
   end
 end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include Pagy::Backend
   before_action :authenticate_user!, only: %i[index
                                               following followers
-                                              fovorite_sayings]
+                                              favorite_sayings]
 
   def index
     @pagy_users, @users = pagy(User.all, items: 30)
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     render 'show_follow'
    end
 
-  def fovorite_sayings
+  def favorite_sayings
     @user = User.find(params[:id])
     @pagy_fav, @favorite_sayings = pagy(@user.fav_sayings, items: 30)
   end

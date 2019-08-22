@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
-      get :fovorite_sayings
+      get :favorite_sayings
     end
   end
   resources :sayings, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
-  resources :favorites, only: [:update]
+  resources :favorites, only: %i[create destroy]
 end

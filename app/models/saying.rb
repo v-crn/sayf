@@ -5,16 +5,10 @@ class Saying < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 200 }
   validate :picture_size
-  has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy, counter_cache: true
 
-  def favorites_total
-    favorites.sum(:points)
-  end
-
-  def favorite_points(user)
-    return 0 unless user || favorites.find_by(user_id: user.id)
-
-    favorites.find_by(user_id: user.id).points
+  def favorite_points_by(user)
+    favorites.where(user_id: user.id).count
   end
 
   def is_favorite_of?(user)
