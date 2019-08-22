@@ -1,13 +1,12 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
-
 <ul class="users">
-	<% @users.each do |user| %>
-	<li>
-		<%= render user %>
-	</li>
-	<% end %>
-	<div class="d-flex justify-content-left mb-2">
-		<%== pagy_bootstrap_nav(@pagy_users) if @pagy_users.pages > 1 %>
-	</div>
+  <% @users.each do |user| %>
+    <li>
+      <%= render user %>
+    </li>
+  <% end %>
+  <div class="d-flex justify-content-left mb-2">
+    <%== pagy_bootstrap_nav(@pagy_users) if @pagy_users.pages > 1 %>
+  </div>
 </ul>

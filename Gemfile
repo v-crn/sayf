@@ -36,20 +36,23 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-	gem 'pry-byebug'
-	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry-byebug'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-	gem 'rubocop'
 end
 
 group :test do
@@ -57,32 +60,32 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'minitest'
+  gem 'minitest-reporters'
+  gem 'rails-controller-testing'
   gem 'webdrivers'
-	gem 'rails-controller-testing'
-	gem 'minitest'
-	gem 'minitest-reporters'
-	gem 'guard'
-	gem 'guard-minitest'
 end
 
 group :production do
-	gem 'pg'
-	gem 'fog-aws'
+  gem 'fog-aws'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Appearance
-gem "bootstrap-sass"
+gem 'bootstrap-material-design'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
-gem 'bootstrap-material-design'
-gem 'jquery-rails' 
-gem 'jquery-ui-rails'
 
 # User authentication
-gem "devise"
+gem 'devise'
 
 # Image upload
 gem 'carrierwave'
@@ -95,4 +98,4 @@ gem 'pagy'
 gem 'dotenv-rails'
 
 # Dummy data
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'

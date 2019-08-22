@@ -1,6 +1,6 @@
 <% if @feed_items.any? %>
-<ol class="sayings">
-	<%= render @feed_items %>
-</ol>
-<%== pagy_bootstrap_nav(@pagy_feed) if @pagy_feed.pages > 1 %>
+  <ol class="sayings">
+    <%= render @feed_items %>
+  </ol>
+  <%== pagy_bootstrap_nav(@pagy_feed) if @pagy_feed.pages > 1 %>
 <% end %>

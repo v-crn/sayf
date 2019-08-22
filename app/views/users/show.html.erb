@@ -1,23 +1,26 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<aside class="col-md-4">
-		<section class="user_info">
-			<%= render 'users/user_info' %>
-		</section>
-		<section class="stats">
-			<%= render 'shared/stats' %>
-		</section>
-	</aside>
-	<div class="col-md-8">
-		<%= render 'follow_form' if user_signed_in? %>
-		<% if @user.sayings.any? %>
-		<h3>Sayings (<%= @user.sayings.count %>)</h3>
-		<ol class="sayings">
-			<%= render @sayings %>
-		</ol>
-		<div class="d-flex justify-content-left mb-2">
-			<%== pagy_bootstrap_nav(@pagy_sayings) if @pagy_sayings.pages > 1 %>
-		</div>
-		<% end %>
-	</div>
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= render 'users/user_info' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="fav">
+      <%= link_to 'Favorite Sayings', fovorite_sayings_user_path(@user) %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <%= render 'follow_form' if user_signed_in? %>
+    <% if @user.sayings.any? %>
+      <h3>Sayings (<%= @user.sayings.count %>)</h3>
+      <ol class="sayings">
+        <%= render @sayings %>
+      </ol>
+      <div class="d-flex justify-content-left mb-2">
+        <%== pagy_bootstrap_nav(@pagy_sayings) if @pagy_sayings.pages > 1 %>
+      </div>
+    <% end %>
+  </div>
 </div>
