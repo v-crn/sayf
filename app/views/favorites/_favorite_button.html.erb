@@ -1,0 +1,13 @@
+<div id="favorite_button">
+  <%= saying.favorites_total %>
+  <% if user_signed_in? %>
+    <%= form_for(current_user.favorites.find_or_create_by!(saying_id: saying.id), remote: true) do |f| %>
+      <%= f.submit '+', class: 'btn btn-default' %>
+    <% end %>
+    <% if current_user.favorites.find_by!(saying_id: saying.id).points > 0 %>
+      <%= form_for(current_user.favorites.find_by(saying_id: saying.id), remote: true) do |f| %>
+        <%= f.submit '-', class: 'btn btn-default' %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
