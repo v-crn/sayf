@@ -7,6 +7,9 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <section class="user_page">
+      <%= link_to "User page", user_path(@user) %>
+    </section>
   </aside>
   <div class="col-md-8">
     <h3>Favorite Sayings (<%= @favorite_sayings.count %>)</h3>
