@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pagy_sayings, @sayings = pagy(@user.sayings, items: 10)
+    @pagy_feed, @feed_items = pagy(@user.sayings, items: 10)
   end
 
   def following
@@ -29,6 +29,6 @@ class UsersController < ApplicationController
 
   def favorite_sayings
     @user = User.find(params[:id])
-    @pagy_fav, @favorite_sayings = pagy(@user.fav_sayings, items: 30)
+    @pagy_feed, @feed_items = pagy(@user.fav_sayings, items: 30)
   end
 end

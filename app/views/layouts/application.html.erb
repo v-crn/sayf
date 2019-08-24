@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<title><%= full_title(yield(:title)) %></title>
-	<%= render 'layouts/rails_default' %>
-	<%= render 'layouts/shim' %>
-</head>
-
-<body>
-	<%= render 'layouts/header' %>
-	<div class="container">
-		<div class='row'>
-			<div class='col-lg-12'>
-				<%= bootstrap_flash %>
-				<%= yield %>
-			</div>
-		</div>
-		<%= render 'layouts/footer' %>
-		<div class="debug_dump">
-			<%= debug(params) if Rails.env.development? %>
-		</div>
-	</div>
-</body>
-
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body class='<%= "#{controller.controller_name}_#{controller.action_name}" %>'>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <div class='row'>
+        <div class='col-lg-12'>
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'layouts/footer' %>
+      <div class="debug_dump">
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </div>
+  </body>
 </html>

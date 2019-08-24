@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
+$theme_color: rgb(254, 232, 233);
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
@@ -14,7 +14,8 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 50px;
+  text-align: left;
 }
 
 section {
@@ -57,7 +58,6 @@ h2 {
   margin-bottom: 20px;
   text-align: center;
   font-weight: normal;
-  // color: $gray-light;
 }
 
 p {
@@ -69,6 +69,8 @@ p {
 /* header */
 
 header {
+  position: fixed;
+
   .dropdown {
     &:hover {
       &>.dropdown-menu {
@@ -78,13 +80,24 @@ header {
   }
 }
 
+.site_header {
+  position: fixed;
+  transition: .5s;
+  width: 100%;
+  z-index: 999;
+}
+
+.site_header.hide {
+  transform: translateY(-100%);
+}
+
 #logo {
   float: left;
-  margin-right: 10px;
   font-size: 1.7em;
   color: white;
   letter-spacing: -1px;
-  padding-top: 9px;
+  margin: 0;
+  padding: 0;
   font-weight: bold;
 
   &:hover {
@@ -152,14 +165,6 @@ aside {
     }
   }
 
-  .user_info {
-    display: inline;
-
-    p {
-      margin: 0;
-    }
-  }
-
   .saying_form {
     margin-bottom: 10px;
   }
@@ -170,6 +175,31 @@ aside {
 
   .user_page {
     font-family: Arial, Helvetica, sans-serif
+  }
+}
+
+.user_info {
+  margin-top: 20px;
+  text-align: center;
+
+  h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #follow_form {
+    float: right;
+  }
+
+  p {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  span {
+    text-align: left;
+    margin-bottom: 10px;
+    color: gray;
   }
 }
 
@@ -246,6 +276,7 @@ select,
 
 .form-links {
   margin-top: 10px;
+  text-align: left;
 }
 
 /* miscellaneous */
@@ -260,7 +291,7 @@ select,
 
 .icon_image {
   // 画像を丸く縁取る
-  border-radius: 100px;
+  border-radius: 20%;
 
   // 縦横比一定でトリミング
   object-fit: cover;
@@ -365,4 +396,192 @@ span.picture {
 
 .new_user {
   text-align: left;
+}
+
+// Home
+.static_pages_home {
+  .home_not_logged_in {
+    text-align: center;
+    background-image: url(/assets/background_images/background_home.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    .welcome_message {
+      align-items: center;
+      justify-content: center;
+      padding-top: 20%;
+      padding-bottom: 30%;
+      vertical-align: middle;
+
+      h3 {
+        margin-bottom: 30px;
+      }
+
+      a {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .new_sayings {
+      margin-left: 15vw;
+      margin-right: 15vw;
+      padding-left: 10%;
+      padding-right: 10%;
+
+      h3 {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+.home_not_logged_in::before {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  content: '';
+}
+
+.static_pages_contact {
+  background-image: url(/assets/background_images/background_contact.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.static_pages_contact::before {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  content: '';
+}
+
+/* navbar 全体の背景色とボーダーカラー */
+.navbar-default {
+  background-color: $theme_color;
+  border-color: rgb(219, 201, 202);
+}
+
+/* navbar テキストカラー */
+.navbar-default .navbar-nav>li>a {
+  color: #2c2828;
+}
+
+/* navbar hover,focus時のテキストカラー */
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #645c5c;
+  background-color: transparent;
+}
+
+/* navbar active設定時のカラー */
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+  color: #703a3a;
+  background-color: #edc3c3;
+}
+
+/* navbar ドロップダウン(親)のカラー */
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+  color: #b67e7ea8;
+  background-color: #edc3e4;
+}
+
+/* navbar ドロップダウン(子)のボックスカラー */
+.dropdown-menu {
+  background-color: $theme_color;
+  border: 1px solid #c7aeaee8;
+  border: 1px solid #8b7171(0, 0, 0, .15);
+  -webkit-box-shadow: 0 6px 12px rgba(136, 94, 107, 0.35);
+  box-shadow: 0 6px 12px rgba(136, 94, 125, 0.35);
+}
+
+/* navbar ドロップダウン(子)テキストカラー */
+.dropdown-menu>li>a {
+  color: #666565;
+}
+
+/* navbar ドロップダウン(子)focus,hover時のカラー */
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  color: #5c5159;
+  background-color: rgba(206, 177, 178, 0.76);
+}
+
+/* navbar ドロップダウン(子)内の区切り線(class=”divider”)のカラー */
+.dropdown-menu .divider {
+  background-color: #c2979c;
+}
+
+/* navbar 画面サイズ767px以下の時のカラー */
+@media (max-width:767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #ffffff;
+  }
+
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: #532626;
+    background-color: transparent;
+  }
+
+  /* ドロップダウンactive設定時のカラー */
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus,
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover {
+    color: #ffb163;
+    background-color: #edd4e5;
+  }
+}
+
+/* navbar ハンバーガー四角枠 */
+.navbar-default .navbar-toggle {
+  border-color: #ffffff;
+}
+
+/* navbar ハンバーガー三本線 */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+/* navbar ハンバーガーボタン,タップとホバーした時の背景色 */
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+  background-color: #ffffff;
+}
+
+/* navbar ハンバーガーボタン,タップとホバーした時の四角枠 */
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+  border-color: #ba65a0;
+}
+
+/* navbar ハンバーガーボタン,タップとホバーした時の三本線 */
+.navbar-default .navbar-toggle:focus>.icon-bar,
+.navbar-default .navbar-toggle:hover>.icon-bar {
+  background-color: #ba65af;
+}
+
+/* navbar Brandのカラー */
+.navbar-default .navbar-brand {
+  color: #ff5555;
+}
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+  color: #ff5555;
+  background-color: transparent;
 }

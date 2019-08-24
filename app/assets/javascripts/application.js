@@ -18,21 +18,36 @@
 //= require turbolinks
 //= require_tree .
 
+// Image Uploader
 $(document).on('turbolinks:load', function () {
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-			reader.onload = function (e) {
-				$('#img_prev').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
-	$("#post_img").change(function () {
-		$('#img_prev').removeClass('hidden');
-		$('.present_img').remove();
-		readURL(this);
-	});
+  $("#post_img").change(function () {
+    $('#img_prev').removeClass('hidden');
+    $('.present_img').remove();
+    readURL(this);
+  });
+});
+
+// 下スクロールで隠れて上スクロールで表示されるheader
+var startPos = 0, winScrollTop = 0;
+$(window).on('scroll', function () {
+  winScrollTop = $(this).scrollTop();
+  if (winScrollTop >= startPos) {
+    if (winScrollTop >= 200) {
+      $('.site_header').addClass('hide');
+    }
+  } else {
+    $('.site_header').removeClass('hide');
+  }
+  startPos = winScrollTop;
 });

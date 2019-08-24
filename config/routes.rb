@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'favorites/create'
-  get 'favorites/destroy'
+  root 'static_pages#home'
+  get  '/help',    to: 'static_pages#help'
+  get  '/about',   to: 'static_pages#about'
+  get  '/contact', to: 'static_pages#contact'
+  get  '/new_sayings', to: 'static_pages#new_sayings'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -8,10 +11,6 @@ Rails.application.routes.draw do
     get 'profile_edit', to: 'users/registrations#profile_edit', as: 'profile_edit'
     patch 'profile_update', to: 'users/registrations#profile_update', as: 'profile_update'
   end
-  root 'static_pages#home'
-  get  '/help',    to: 'static_pages#help'
-  get  '/about',   to: 'static_pages#about'
-  get  '/contact', to: 'static_pages#contact'
   resources :users do
     member do
       get :following, :followers

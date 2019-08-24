@@ -1,3 +1,30 @@
 <% provide(:title, "About") %>
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<h1>About</h1>
+<h3>Saifについて</h3>
+<p>Saifは自作の格言や諺、教訓などの文章（セイング）を公開する場を提供します。</p>
+<h3>使い方</h3>
+<ol>
+  <li>アカウント登録しよう</li>
+  <li>みんなの投稿を見てみよう</li>
+  <li>お気に入りのセイングにファボポイントを贈ろう</li>
+  <li>気になるユーザーをフォローしよう</li>
+  <li>セイングを投稿しよう</li>
+</ol>
+<h3>開発について</h3>
+<!-- 折り畳み展開ポインタ -->
+<div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+  <a style="cursor:pointer;">▼ クリックで展開</a>
+</div>
+<div id="open" style="display:none;clear:both;">
+  <h4>開発の経緯</h4>
+  <p>
+    Rails Tutorialをやり終えていよいよ自作のWebアプリを作ってみたくなり、
+    まずは簡単のために類似の機能を持つものをということで本アプリの開発に着手しました。
+  </p>
+  <h4>技術仕様</h4>
+  <ul>
+    <li>フレームワーク：Ruby on Rails</li>
+    <li>サーバー：Heroku</li>
+    <li>ストレージ：Amazon S3</li>
+  </ul>
+</div>
