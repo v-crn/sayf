@@ -466,6 +466,51 @@ span.picture {
   content: '';
 }
 
+.static_pages_tos {}
+
+.static_pages_privacy {}
+
+.wrap_tos {}
+
+.wrap_privacy_policy {}
+
+.ending_sentence {
+  margin: 30px 30px 0 0;
+  font-size: 0.95em;
+  line-height: 140%;
+  text-align: right;
+}
+
+.wrap_nav_and_contents {
+  // display: -webkit-flex;
+  // display: flex;
+}
+
+.chapter_nav {
+  top: 120px;
+  padding-bottom: 60px;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI',
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif;
+
+  ul {
+    list-style: none;
+  }
+
+  .chapter {
+    margin: 10px 10px 0 0;
+  }
+}
+
+.main {
+  top: 60px;
+  padding-bottom: 60px;
+}
+
 /* navbar 全体の背景色とボーダーカラー */
 .navbar-default {
   background-color: $theme_color;

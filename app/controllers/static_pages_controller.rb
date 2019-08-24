@@ -15,6 +15,10 @@ class StaticPagesController < ApplicationController
   def about; end
 
   def contact; end
+  
+  def tos; end
+  
+  def privacy; end
 
   def new_sayings
     @user = current_user if user_signed_in?

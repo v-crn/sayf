@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
+  get  '/tos', to: 'static_pages#tos'
+  get  '/privacy', to: 'static_pages#privacy'
   get  '/new_sayings', to: 'static_pages#new_sayings'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
