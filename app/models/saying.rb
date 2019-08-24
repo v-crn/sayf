@@ -5,7 +5,7 @@ class Saying < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 200 }
   validate :picture_size
-  has_many :favorites, dependent: :destroy, counter_cache: true
+  has_many :favorites, dependent: :destroy
 
   def favorite_points_by(user)
     favorites.where(user_id: user.id).count

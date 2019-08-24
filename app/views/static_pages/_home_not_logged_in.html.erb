@@ -1,8 +1,17 @@
-<div class="row">
-	<aside class="col-md-4">
-	</aside>
-	<div class="col-md-8">
-		<h3>New Sayings</h3>
-		<%= render 'sayings/new_sayings' %>
-	</div>
+<div class="home_not_logged_in">
+  <div class="welcome_message">
+    <h1>Sayings for you</h1>
+    <h3>Get new points of view</h3>
+    <div class="panel">
+      <a href=<%= new_user_registration_path %>>
+        <button>
+          Create account
+        </button>
+      </a>
+    </div>
+  </div>
+  <div class="new_sayings">
+    <h3>New Sayings</h3>
+    <%= render 'shared/feed' %>
+  </div>
 </div>
