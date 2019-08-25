@@ -30,11 +30,6 @@ $hover_border_color: rgb(0, 0, 0);
     }
   }
 
-  // enable to touch back elements ignoring z-index
-  input[type="submit"] {
-    pointer-events: none;
-  }
-
   button {
     color: #454545;
     background: white;
@@ -51,8 +46,8 @@ $hover_border_color: rgb(0, 0, 0);
     font-weight: bold;
   }
 
-  button:before,
-  button:after {
+  button::before,
+  button::after {
     content: '';
     display: block;
     position: absolute;
@@ -64,24 +59,24 @@ $hover_border_color: rgb(0, 0, 0);
     transition: all 0.3s ease-in-out
   }
 
-  button:before {
+  button::before {
     top: -6px;
     left: -6px;
     border-width: 2px 0 0 2px;
-    z-index: 5;
   }
 
-  button:after {
+  button::after {
     bottom: -6px;
     right: -6px;
     border-width: 0 2px 2px 0;
   }
 
-  button:hover:before,
-  button:hover:after {
+  button:hover::before,
+  button:hover::after {
     width: calc(100% + 12px);
     height: calc(100% + 12px);
     border-color: $hover_border_color;
+    pointer-events: none;
   }
 
   button:hover {
