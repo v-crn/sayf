@@ -87,6 +87,7 @@ gem 'twitter-bootstrap-rails'
 # User authentication
 gem 'devise'
 gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
 gem 'omniauth-twitter'
 
 # Image upload

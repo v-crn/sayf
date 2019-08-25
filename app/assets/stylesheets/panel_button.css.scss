@@ -9,6 +9,32 @@ $hover_border_color: rgb(0, 0, 0);
   background: none;
   box-shadow: none;
 
+  // reset appearance of form & input
+  form,
+  input {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    -webkit-box-sizing: content-box;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    box-sizing: border-box;
+
+    &::-webkit-search-decoration {
+      display: none;
+    }
+
+    &::focus {
+      outline-offset: -2px;
+    }
+  }
+
+  // enable to touch back elements ignoring z-index
+  input[type="submit"] {
+    pointer-events: none;
+  }
+
   button {
     color: #454545;
     background: white;
