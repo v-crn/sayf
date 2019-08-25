@@ -15,9 +15,9 @@ class StaticPagesController < ApplicationController
   def about; end
 
   def contact; end
-  
+
   def tos; end
-  
+
   def privacy; end
 
   def new_sayings

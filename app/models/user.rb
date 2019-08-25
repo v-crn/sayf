@@ -7,7 +7,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :omniauthable
 
   # Sayings
   has_many :sayings, dependent: :destroy
@@ -27,6 +28,15 @@ class User < ApplicationRecord
   # Favorites
   has_many :favorites, dependent: :destroy
   has_many :fav_sayings, -> { distinct }, through: :favorites, source: :saying
+
+  def self.find_or_create_from_auth(auth)
+    find_or_create_by(email: auth[:info][:email]) do |user|
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth[:info][:nickname]
+      user.remote_icon_url = auth[:info][:image]
+      user.profile = auth[:info][:description]
+    end
+  end
 
   def like(saying)
     favorites.create!(saying_id: saying.id)

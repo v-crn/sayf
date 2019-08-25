@@ -6,6 +6,14 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
     Warden.test_mode!
     @user = users(:john)
+
+    # OmniAuth configuration
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
+      provider: 'twitter',
+      uid: '123456',
+      info: { email: 'john@example.com', nickname: 'John English' }
+    )
   end
 
   test 'login with invalid information' do
@@ -29,5 +37,18 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select 'a[href=?]', new_user_session_path
     assert_select 'a[href=?]', destroy_user_session_path, count: 0
+  end
+
+  test 'login and logout with twitter account' do
+    get new_user_session_path
+    assert_select 'a[href=?]', '/users/auth/twitter'
+    get '/users/auth/twitter'
+    assert_redirected_to '/users/auth/twitter/callback'
+    follow_redirect!
+    assert_redirected_to root_path
+    follow_redirect!
+    assert_select 'a[href=?]', destroy_user_session_path
+    delete destroy_user_session_path
+    assert_nil session[:user_id]
   end
 end

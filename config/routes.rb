@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get  '/privacy', to: 'static_pages#privacy'
   get  '/new_sayings', to: 'static_pages#new_sayings'
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
     get 'profile_edit', to: 'users/registrations#profile_edit', as: 'profile_edit'

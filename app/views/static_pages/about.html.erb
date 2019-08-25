@@ -10,7 +10,7 @@
   <li>気になるユーザーをフォローしよう</li>
   <li>セイングを投稿しよう</li>
 </ol>
-<h3>開発について</h3>
+<h3>開発の話</h3>
 <!-- 折り畳み展開ポインタ -->
 <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
   <a style="cursor:pointer;">▼ クリックで展開</a>
@@ -22,9 +22,13 @@
     まずは簡単のために類似の機能を持つものをということで本アプリの開発に着手しました。
   </p>
   <h4>技術仕様</h4>
-  <ul>
-    <li>フレームワーク：Ruby on Rails</li>
-    <li>サーバー：Heroku</li>
-    <li>ストレージ：Amazon S3</li>
-  </ul>
+  <p>Sayfを作成するにあたり使用したライブラリなどを以下に示します。</p>
+  <h5>言語・フレームワーク</h5>
+  <p>Ruby 2.5.3 / Rails 5.2.3</p>
+  <h5>View（HTML テンプレート）</h5>
+  <p>ERB</p>
+  <h5>ログイン周り</h5>
+  <p>Devise / Twitter Omniauth</p>
+  <h5>インフラ</h5>
+  <p>Heroku / S3</p>
 </div>
