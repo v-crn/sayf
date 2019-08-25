@@ -1,8 +1,9 @@
 <h1>Log in</h1>
+<h3>SNS Authentication</h3>
 <div class="panel">
-  <a href=<%= twitter_auth_url %>>
-    <button>Log in with twitter</button>
-  </a>
+  <button>
+    <%= button_to 'Twitter', twitter_auth_url %>
+  </button>
 </div>
 <p>or</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

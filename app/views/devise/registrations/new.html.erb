@@ -1,9 +1,11 @@
 <h1>Sign up</h1>
-<h3>SNS Authentication</h3>
-<div class="sns_icon_twitter">
-  <%= button_to 'Twitter', twitter_auth_url %>
+<h3>Sign up with SNS</h3>
+<div class="panel">
+  <button>
+    <%= button_to 'Twitter', twitter_auth_url %>
+  </button>
 </div>
-<h3>メールアドレスで作成</h3>
+<h3>Sign up with email</h3>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
