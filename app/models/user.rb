@@ -35,6 +35,7 @@ class User < ApplicationRecord
       user.name = auth[:info][:nickname]
       user.remote_icon_url = auth[:info][:image]
       user.profile = auth[:info][:description]
+      user.skip_confirmation!
     end
   end
 
