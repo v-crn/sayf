@@ -9,6 +9,7 @@ class Users::OmniauthCallbacksController < ApplicationController
     provider = provider.to_s
 
     @user = User.find_or_create_from_auth(request.env['omniauth.auth'])
+    @user.skip_confirmation!
 
     if @user.persisted?
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
