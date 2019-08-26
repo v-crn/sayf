@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :omniauthable
+         :confirmable, :omniauthable, omniauth_providers: [:twitter]
 
   # Sayings
   has_many :sayings, dependent: :destroy
@@ -29,12 +29,15 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :fav_sayings, -> { distinct }, through: :favorites, source: :saying
 
+  # SNS Authentication
   def self.find_or_create_from_auth(auth)
-    find_or_create_by(email: auth[:info][:email]) do |user|
+    find_or_create_by(email: auth.info.email) do |user|
       user.password = Devise.friendly_token[0, 20]
-      user.name = auth[:info][:nickname]
-      user.remote_icon_url = auth[:info][:image]
-      user.profile = auth[:info][:description]
+      user.name = auth.info.name
+      user.remote_icon_url = auth.info.image
+      user.profile = auth.info.description
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.skip_confirmation!
     end
   end

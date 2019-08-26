@@ -2,6 +2,8 @@ john:
   email: "john@example.com"
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.now - 100 %>
+  provider: 'twitter'
+  uid: '123456'
   
 <% 30.times do |n| %>
 user_<%= n %>:
