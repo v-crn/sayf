@@ -12,7 +12,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
       provider: 'twitter',
       uid: '123456',
-      info: { email: 'john@example.com', nickname: 'John English' }
+      info: { email: 'john@example.com', name: 'John English' }
     )
   end
 
