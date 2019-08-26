@@ -41,7 +41,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test 'login and logout with twitter account' do
     get new_user_session_path
-    assert_select 'a[href=?]', '/users/auth/twitter'
+    assert_select 'form[action=?]', user_twitter_omniauth_authorize_path
     post '/users/auth/twitter', params: OmniAuth.config.mock_auth[:twitter]
     assert_redirected_to '/users/auth/twitter/callback'
     follow_redirect!
