@@ -30,4 +30,7 @@ class SayingsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+
+  test 'search sayings correctly' do
+  end
 end

@@ -12,9 +12,9 @@
                                           data: { confirm: "You sure?" } %>
         <% end %>
       </span>
-      <span id="favorites-saying_id<%= saying.id %>">
+      <div id="favorites-saying_id<%= saying.id %>">
         <%= render 'favorites/favorite_button', :saying => saying %>
-      </span>
+      </div>
     </div>
   </div>
 </li>

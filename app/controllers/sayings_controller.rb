@@ -1,6 +1,19 @@
 class SayingsController < ApplicationController
+  include Pagy::Backend
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :correct_user, only: :destroy
+
+  def search
+    return if params[:keywords].blank?
+
+    @keywords = params[:keywords]
+    @pagy_results, @search_results = pagy(Saying.search_with(@keywords), items: 30)
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: request.referer) }
+      format.js
+    end
+  end
 
   def create
     @saying = current_user.sayings.build(saying_params)

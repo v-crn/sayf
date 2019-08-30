@@ -1,0 +1,13 @@
+<%= form_with url: search_sayings_path, method: :get do |f| %>
+  <%= f.text_field :keywords, placeholder: "Search", class: "form-control" %>
+  <%= f.submit value="&#128269;".html_safe, class: "btn btn-default" %>
+<% end %>
+<% if @search_results %>
+  <div class="search_results">
+    <h5>Search Terms: <%= @keywords %></h5>
+    <ol class="sayings">
+      <%= render @search_results %>
+    </ol>
+    <%== pagy_bootstrap_nav(@pagy_results) if @pagy_results.pages > 1 %>
+  </div>
+<% end %>
