@@ -1,5 +1,9 @@
 # 格言投稿アプリ『Sayf』
 
+## DEMOサイト
+
+<https://sayf-fictional-sayings.herokuapp.com>
+
 ## 概要
 
 Sayfは自作の格言や諺、教訓などの文章表現（セイング）を画像とともに投稿できるSNSです。
