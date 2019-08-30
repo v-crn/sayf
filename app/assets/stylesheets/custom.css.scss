@@ -457,6 +457,7 @@ span.picture {
 }
 
 .static_pages_contact {
+  text-align: center;
   background-image: url(/assets/background_images/background_contact.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -489,6 +490,12 @@ span.picture {
   }
 
   h5 {
+    text-align: left;
+  }
+}
+
+.static_pages_about {
+  h2 {
     text-align: left;
   }
 }
