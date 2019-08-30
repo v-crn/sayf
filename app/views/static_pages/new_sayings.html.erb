@@ -1,10 +1,18 @@
 <div class="home_not_logged_in">
   <div class="row">
-    <aside class="col-md-4">
-    </aside>
-    <div class="col-md-8">
-      <h3>New Sayings</h3>
-      <%= render 'shared/feed' %>
+    <div class="col-lg-12">
+      <aside class="col-md-3">
+      </aside>
+      <div class="col-md-6">
+        <h3>Saying Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+      <div class="col-md-3">
+        <h4>Search Sayf</h4>
+        <div id="search_sayings">
+          <%= render 'sayings/search_sayings_form' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

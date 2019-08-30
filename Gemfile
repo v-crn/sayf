@@ -40,6 +40,8 @@ group :development, :test do
   gem 'pry-byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # Environment variables
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -96,9 +98,6 @@ gem 'mini_magick'
 
 # Pagination
 gem 'pagy'
-
-# Environment variables
-gem 'dotenv-rails'
 
 # Dummy data
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'

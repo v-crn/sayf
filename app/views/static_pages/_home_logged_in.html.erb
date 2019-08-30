@@ -1,19 +1,24 @@
 <div class="row">
-	<aside class="col-md-4">
-		<section class="user_info">
-			<!--sayingをpostした直後@userがnilになるので再度current_userを代入-->
-			<% @user = current_user if @user.blank? %>
-			<%= render 'users/user_info' %>
-		</section>
-		<section class="stats">
-			<%= render 'shared/stats' %>
-		</section>
-		<section class="saying_form">
-			<%= render 'sayings/saying_form' %>
-		</section>
-	</aside>
-	<div class="col-md-8">
-		<h3>Saying Feed</h3>
-		<%= render 'shared/feed' %>
-	</div>
+  <aside class="col-md-3">
+    <section class="user_info">
+      <!--sayingをpostした直後@userがnilになるので再度current_userを代入-->
+      <% @user = current_user if @user.blank? %>
+      <%= render 'users/user_info' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section class="saying_form">
+      <%= render 'sayings/saying_form' %>
+    </section>
+  </aside>
+  <div class="col-md-6">
+    <h3>Saying Feed</h3>
+    <%= render 'shared/feed' %>
+  </div>
+  <div class="col-md-3">
+    <div id="search_sayings">
+      <%= render 'sayings/search_sayings_form' %>
+    </div>
+  </div>
 </div>

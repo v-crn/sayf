@@ -348,7 +348,8 @@ select,
     }
 
     .saying_options {
-      display: inline;
+      display: inline-block;
+
 
       .timestamp {
         color: $gray-light;
@@ -357,18 +358,26 @@ select,
       // favorites
 
       #favorite_button {
-        display: block;
+        display: inline-flex;
 
         .favorite-points {
-          color: lightpink;
           display: inline-block;
+          color: lightpink;
         }
 
         .favorite-form {
-          display: inline-block;
+          display: inline-flex;
 
           form {
-            display: inline-block;
+            padding: 0 0 4px 4px;
+            margin: 0;
+
+            input[type="submit"] {
+              width: 20px;
+              height: 20px;
+              padding: 0;
+              text-align: center;
+            }
           }
         }
       }
@@ -430,10 +439,6 @@ span.picture {
     }
 
     .new_sayings {
-      margin-left: 15vw;
-      margin-right: 15vw;
-      padding-left: 10%;
-      padding-right: 10%;
 
       h3 {
         margin-bottom: 40px;
@@ -464,6 +469,28 @@ span.picture {
   width: 100%;
   height: 120%;
   content: '';
+}
+
+// Search
+#search_sayings {
+  form {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    input[type="text"] {
+      margin: 0 0 0 0;
+    }
+
+    input[type="submit"] {
+      padding: 5px;
+    }
+  }
+
+  h5 {
+    text-align: left;
+  }
 }
 
 .static_pages_tos {}

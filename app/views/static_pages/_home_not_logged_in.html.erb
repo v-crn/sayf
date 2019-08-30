@@ -10,8 +10,21 @@
       </a>
     </div>
   </div>
-  <div class="new_sayings">
-    <h3>New Sayings</h3>
-    <%= render 'shared/feed' %>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="row">
+        <aside class="col-md-3">
+        </aside>
+        <div class="col-md-6 new_sayings">
+          <h3>New Sayings</h3>
+          <%= render 'shared/feed' %>
+        </div>
+        <div class="col-md-3">
+          <div id="search_sayings">
+            <%= render 'sayings/search_sayings_form' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

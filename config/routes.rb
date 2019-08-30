@@ -20,7 +20,11 @@ Rails.application.routes.draw do
       get :favorite_sayings
     end
   end
-  resources :sayings, only: %i[create destroy]
+  resources :sayings, only: %i[create destroy] do
+    collection do
+      get 'search'
+    end
+  end
   resources :relationships, only: %i[create destroy]
   resources :favorites, only: %i[create destroy]
 end
