@@ -1,0 +1,4 @@
+<% if saying.reference_id %>
+  &#x21a9;
+  <%= link_to Saying.find(saying.reference_id).content, saying_path(saying.reference_id) %>
+<% end %>

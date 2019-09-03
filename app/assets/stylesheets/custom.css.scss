@@ -333,6 +333,11 @@ select,
     border-top: 1px solid #e8e8e8;
   }
 
+  .saying_path {
+    display: inline;
+    text-decoration: none;
+  }
+
   .icon {
     float: left;
     margin-right: 15px;
@@ -353,7 +358,6 @@ select,
 
     .saying_options {
       display: inline-block;
-
 
       .timestamp {
         color: $gray-light;
@@ -382,6 +386,20 @@ select,
               padding: 0;
               text-align: center;
             }
+          }
+        }
+      }
+
+      // Reference
+
+      .saying_reference {
+        color: $gray-light;
+
+        a {
+          text-decoration: none;
+
+          &:visited {
+            color: $gray-light;
           }
         }
       }
@@ -547,6 +565,12 @@ span.picture {
 .main {
   top: 60px;
   padding-bottom: 60px;
+}
+
+.sayings_show {
+  .sayings {
+    margin-top: 20px;
+  }
 }
 
 /* navbar 全体の背景色とボーダーカラー */

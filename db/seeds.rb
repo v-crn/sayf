@@ -25,7 +25,10 @@ all_users = User.all
 all_users.each do |u|
   Random.rand(30).times do
     content = Faker::Quote.famous_last_words
-    u.sayings.create!(content: content, created_at: Random.rand(1000).hours.ago)
+    reference_id = Saying.all.sample.id if Random.rand(3).zero?
+    u.sayings.create!(content: content,
+                      created_at: Random.rand(1000).hours.ago,
+                      reference_id: reference_id)
   end
 end
 

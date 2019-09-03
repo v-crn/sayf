@@ -15,6 +15,11 @@ class SayingsController < ApplicationController
     end
   end
 
+  def show
+    @saying = Saying.find(params[:id])
+    @referenced_saying_id = params[:id]
+  end
+
   def create
     @saying = current_user.sayings.build(saying_params)
     if @saying.save
@@ -35,7 +40,7 @@ class SayingsController < ApplicationController
   private
 
   def saying_params
-    params.require(:saying).permit(:content, :picture)
+    params.require(:saying).permit(:content, :picture, :reference_id)
   end
 
   def correct_user

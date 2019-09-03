@@ -1,20 +1,29 @@
 <li id="saying-<%= saying.id %>">
   <div class="icon"><%= link_to icon_for(saying.user, size: 65), saying.user %></div>
-  <div class="content">
-    <p><%= saying.content %></p>
-    <%= image_tag saying.picture.url if saying.picture? %>
-    <div class="saying_options">
-      <span class="timestamp">
-        Posted by <%= link_to saying.user.name, saying.user %>
-        <%= time_ago_in_words(saying.created_at) %> ago.
-        <% if saying.user == current_user %>
-          <%= link_to "delete", saying, method: :delete,
-                                          data: { confirm: "You sure?" } %>
-        <% end %>
-      </span>
-      <div id="favorites-saying_id<%= saying.id %>">
-        <%= render 'favorites/favorite_button', :saying => saying %>
+  <a href=<%= saying_path(saying.id) %> class="saying_path">
+    <div class="content">
+      <p><%= saying.content %></p>
+      <%= image_tag saying.picture.url if saying.picture? %>
+      <div class="saying_options">
+        <span class="timestamp">
+          Posted by <%= link_to saying.user.name, saying.user %>
+          <%= time_ago_in_words(saying.created_at) %> ago.
+          <% if saying.user == current_user %>
+            <%= link_to "delete", saying, method: :delete,
+                                            data: { confirm: "You sure?" } %>
+          <% end %>
+        </span>
+        <div class="saying_option2">
+          <div id="favorites-saying_id<%= saying.id %>">
+            <%= render 'favorites/favorite_button', :saying => saying %>
+          </div>
+          <% if saying.reference_id %>
+            <div class="saying_reference">
+              <%= render 'sayings/saying_reference', :saying => saying %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
 </li>

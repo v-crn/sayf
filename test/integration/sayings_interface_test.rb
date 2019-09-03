@@ -52,4 +52,14 @@ class SayingsInterfaceTest < ActionDispatch::IntegrationTest
     get root_path
     assert_match '1 saying', response.body
   end
+
+  test 'should display reference id' do
+    get root_path
+    assert_select 'div.saying_reference', false
+    saying = @user.sayings.first
+    saying.reference_id = @user.sayings.sample.id
+    saying.save
+    get root_path
+    assert_select 'div.saying_reference'
+  end
 end
