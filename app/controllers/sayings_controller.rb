@@ -34,8 +34,8 @@ class SayingsController < ApplicationController
   def destroy
     @saying.destroy
     flash[:success] = 'Saying deleted'
-    redirect_to request.referer || root_url
-   end
+    redirect_to root_url
+  end
 
   private
 
